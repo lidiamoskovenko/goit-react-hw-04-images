@@ -1,27 +1,20 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Searchbar } from "./Searchbar";
-import {ImageGallery} from "./ImageGallery";
+import ImageGallery from "./ImageGallery";
 
-export class App extends Component {
-  state = {
-    value: '',
-  }
+const App = () => {
+  const [searchValue, setSearchValue] = useState('');
 
-onSubmit = (value) => {
-  this.setState({ value: value});
-  
-};
-
-
-  render() {
+  const handleSearchSubmit = (value) => {
+    setSearchValue(value);
+  };
 
   return (
-    <div style={{ 
-   padding: '10px',
-}}
-   >
-     <Searchbar onSubmit={this.onSubmit}/>
-     <ImageGallery value={this.state.value} />
+    <div style={{ padding: "10px" }}>
+      <Searchbar onSubmit={handleSearchSubmit} />
+      <ImageGallery value={searchValue} />
     </div>
   );
-  }};
+};
+
+export default App;
