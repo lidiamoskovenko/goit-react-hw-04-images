@@ -1,0 +1,18 @@
+.images_list{
+list-style: none;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+column-gap: 24px;
+row-gap: 30px;
+}
+
+.images_item{
+    flex-basis: calc((100% - 30px) / 5);
+    cursor: pointer; 
+}
+.image{
+  width: 100%;
+  height: 100%;  
+}
