@@ -1,37 +1,36 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { Styled } from './Styled';
 
-export class Modal extends Component {
+const Modal = (modalImage, closeModal) => {
 
-  componentDidMount() {
-    window.addEventListener('keydown', this.handleKeyDown);
+useEffect = ( () => {
+  window.addEventListener('keydown', handleKeyDown);
     document.body.style.overflow = 'hidden';
-  }
 
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleKeyDown);
+return () => {
+  window.removeEventListener('keydown', this.handleKeyDown);
     document.body.style.overflow = 'auto';
+}, []});
+
+const handleOverlayClick = (event) => {
+  if (event.target === event.currentTarget) {
+    closeModal();
   }
+};
 
-  handleOverlayClick = (event) => {
-    if (event.target === event.currentTarget) {
-      this.props.closeModal();
-    }
-  };
-
-  handleKeyDown = event => {
-    if (event.code === 'Escape') {
-      this.props.closeModal();
-    }
-  };
-
-  render() {
-    return (
-      <Styled >
-        <div className="modal" onClick={this.handleOverlayClick}>
-          <img src={this.props.modalImage} alt="Foto" width='100%' height='100%' />
-        </div>
-      </Styled>
-    );
+const handleKeyDown = event => {
+  if (event.code === 'Escape') {
+    closeModal();
   }
+};
+  return (
+    <Styled >
+      <div className="modal" onClick={this.handleOverlayClick}>
+        <img src={this.props.modalImage} alt="Foto" width='100%' height='100%' />
+      </div>
+    </Styled>
+  );
 }
+
+
+export default Modal;

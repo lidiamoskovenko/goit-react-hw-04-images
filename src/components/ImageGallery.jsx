@@ -4,7 +4,7 @@ import axios from "axios";
 import ImageGalleryItem from "./ImageGalleryItem/ImageGalleryItem";
 import Button from "./Button";
 import Loader from "./Loader";
-import { Modal } from "./Modal/Modal";
+import  Modal  from "./Modal/Modal";
 
 const ImageGallery = ({ value }) => {
   const [images, setImages] = useState(null);
